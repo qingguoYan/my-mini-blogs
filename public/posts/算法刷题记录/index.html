@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <title>算法刷题记录 | 闫庆国的个人网站</title>
+
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">    
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+<meta name="description" content="力扣（LeetCode）算法题解记录">
+<meta name="generator" content="Hugo 0.147.7">
+
+
+  <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+
+
+
+
+
+
+
+  </head>
+
+  <body>
+    <nav class="navigation">
+	
+		<a href="/"> <span class="arrow">←</span>首页</a>
+	
+	<a href="/posts">归档</a>
+	<a href="/tags">标签</a>
+	<a href="/about">关于</a>
+
+	
+
+	
+</nav>
+
+
+    <main class="main">
+      
+
+<section id="single">
+    <h1 class="title">算法刷题记录</h1>
+
+    <div class="tip">
+        <time datetime="2025-06-05 00:00:00 &#43;0000 UTC">2025年06月05日</time>
+        <span class="split">
+          ·
+        </span>
+        <span>
+          1640字
+        </span>
+        <span class="split">
+          ·
+        </span>
+        <span>
+          4分钟
+        </span>
+    </div>
+
+
+    <div class="content">
+      <div>
+        <h1 id="算法刷题记录">算法刷题记录 <a href="#%e7%ae%97%e6%b3%95%e5%88%b7%e9%a2%98%e8%ae%b0%e5%bd%95" class="anchor">🔗</a></h1><h2 id="1-数组">1. 数组 <a href="#1-%e6%95%b0%e7%bb%84" class="anchor">🔗</a></h2><h3 id="11-两数之和">1.1 两数之和 <a href="#11-%e4%b8%a4%e6%95%b0%e4%b9%8b%e5%92%8c" class="anchor">🔗</a></h3><p><strong>思路</strong>：哈希表记录访问过元素的索引</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">var</span> twoSum <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">function</span> (nums, target) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">const</span> map <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">new</span> Map();
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">for</span> (<span style="color:#a2f;font-weight:bold">let</span> i <span style="color:#666">=</span> <span style="color:#666">0</span>; i <span style="color:#666">&lt;</span> nums.length; i<span style="color:#666">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a2f;font-weight:bold">const</span> num <span style="color:#666">=</span> target <span style="color:#666">-</span> nums[i];
+</span></span><span style="display:flex;"><span>    <span style="color:#a2f;font-weight:bold">if</span> (map.has(num)) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a2f;font-weight:bold">return</span> [map.get(num), i];
+</span></span><span style="display:flex;"><span>    } <span style="color:#a2f;font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>      map.set(nums[i], i);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="12-删除有序数组中的重复项">1.2 删除有序数组中的重复项 <a href="#12-%e5%88%a0%e9%99%a4%e6%9c%89%e5%ba%8f%e6%95%b0%e7%bb%84%e4%b8%ad%e7%9a%84%e9%87%8d%e5%a4%8d%e9%a1%b9" class="anchor">🔗</a></h3><p><strong>思路</strong>：双指针（快慢指针），元素有序递增，判断元素是否与前一个相同，不同则移动慢指针，返回慢指针索引+1</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">var</span> removeDuplicates <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">function</span> (nums) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">let</span> i <span style="color:#666">=</span> <span style="color:#666">0</span>; <span style="color:#080;font-style:italic">// 最后不重复元素的索引位置
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>  <span style="color:#a2f;font-weight:bold">for</span> (<span style="color:#a2f;font-weight:bold">let</span> j <span style="color:#666">=</span> <span style="color:#666">1</span>; j <span style="color:#666">&lt;</span> nums.length; j<span style="color:#666">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a2f;font-weight:bold">if</span> (nums[j] <span style="color:#666">!==</span> nums[i]) {
+</span></span><span style="display:flex;"><span>      nums[<span style="color:#666">++</span>i] <span style="color:#666">=</span> nums[j];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">return</span> i <span style="color:#666">+</span> <span style="color:#666">1</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="13-原地移除元素">1.3 原地移除元素 <a href="#13-%e5%8e%9f%e5%9c%b0%e7%a7%bb%e9%99%a4%e5%85%83%e7%b4%a0" class="anchor">🔗</a></h3><p><strong>思路</strong>：双指针（首尾指针）</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">var</span> removeElement <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">function</span> (nums, val) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">let</span> left <span style="color:#666">=</span> <span style="color:#666">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">let</span> right <span style="color:#666">=</span> nums.length <span style="color:#666">-</span> <span style="color:#666">1</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">while</span> (left <span style="color:#666">&lt;=</span> right) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a2f;font-weight:bold">if</span> (nums[left] <span style="color:#666">===</span> val) {
+</span></span><span style="display:flex;"><span>      nums[left] <span style="color:#666">=</span> nums[right];
+</span></span><span style="display:flex;"><span>      right<span style="color:#666">--</span>;
+</span></span><span style="display:flex;"><span>    } <span style="color:#a2f;font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>      left<span style="color:#666">++</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">return</span> left;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="14-搜索插入位置">1.4 搜索插入位置 <a href="#14-%e6%90%9c%e7%b4%a2%e6%8f%92%e5%85%a5%e4%bd%8d%e7%bd%ae" class="anchor">🔗</a></h3><p><strong>思路</strong>：二分查找法</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">var</span> searchInsert <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">function</span> (nums, target) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">let</span> left <span style="color:#666">=</span> <span style="color:#666">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">let</span> right <span style="color:#666">=</span> nums.length <span style="color:#666">-</span> <span style="color:#666">1</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">while</span> (left <span style="color:#666">&lt;=</span> right) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a2f;font-weight:bold">const</span> middle <span style="color:#666">=</span> <span style="color:#a2f">Math</span>.ceil((left <span style="color:#666">+</span> right) <span style="color:#666">/</span> <span style="color:#666">2</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a2f;font-weight:bold">if</span> (nums[middle] <span style="color:#666">===</span> target) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a2f;font-weight:bold">return</span> middle;
+</span></span><span style="display:flex;"><span>    } <span style="color:#a2f;font-weight:bold">else</span> <span style="color:#a2f;font-weight:bold">if</span> (nums[middle] <span style="color:#666">&gt;</span> target) {
+</span></span><span style="display:flex;"><span>      right <span style="color:#666">=</span> middle <span style="color:#666">-</span> <span style="color:#666">1</span>;
+</span></span><span style="display:flex;"><span>    } <span style="color:#a2f;font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>      left <span style="color:#666">=</span> middle <span style="color:#666">+</span> <span style="color:#666">1</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">return</span> left;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="15-加一">1.5 加一 <a href="#15-%e5%8a%a0%e4%b8%80" class="anchor">🔗</a></h3><p><strong>思路</strong>：从后向前遍历，处理进位情况</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">var</span> plusOne <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">function</span> (digits) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">for</span> (<span style="color:#a2f;font-weight:bold">let</span> i <span style="color:#666">=</span> digits.length <span style="color:#666">-</span> <span style="color:#666">1</span>; i <span style="color:#666">&gt;=</span> <span style="color:#666">0</span>; i<span style="color:#666">--</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a2f;font-weight:bold">if</span> (digits[i] <span style="color:#666">!==</span> <span style="color:#666">9</span>) {
+</span></span><span style="display:flex;"><span>      digits[i] <span style="color:#666">+=</span> <span style="color:#666">1</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#a2f;font-weight:bold">return</span> digits;
+</span></span><span style="display:flex;"><span>    } <span style="color:#a2f;font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>      digits[i] <span style="color:#666">=</span> <span style="color:#666">0</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">return</span> [<span style="color:#666">1</span>, ...digits];
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="16-合并两个有序数组">1.6 合并两个有序数组 <a href="#16-%e5%90%88%e5%b9%b6%e4%b8%a4%e4%b8%aa%e6%9c%89%e5%ba%8f%e6%95%b0%e7%bb%84" class="anchor">🔗</a></h3><p><strong>思路</strong>：三指针，数组有序，从后往前对比</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">var</span> merge <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">function</span> (nums1, m, nums2, n) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">let</span> i <span style="color:#666">=</span> m <span style="color:#666">-</span> <span style="color:#666">1</span>; <span style="color:#080;font-style:italic">// nums1 的最后一个有效元素
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>  <span style="color:#a2f;font-weight:bold">let</span> j <span style="color:#666">=</span> n <span style="color:#666">-</span> <span style="color:#666">1</span>; <span style="color:#080;font-style:italic">// nums2 的最后一个元素
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>  <span style="color:#a2f;font-weight:bold">let</span> k <span style="color:#666">=</span> m <span style="color:#666">+</span> n <span style="color:#666">-</span> <span style="color:#666">1</span>; <span style="color:#080;font-style:italic">// 合并后的最后一个位置
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">while</span> (j <span style="color:#666">&gt;=</span> <span style="color:#666">0</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a2f;font-weight:bold">if</span> (i <span style="color:#666">&gt;=</span> <span style="color:#666">0</span> <span style="color:#666">&amp;&amp;</span> nums1[i] <span style="color:#666">&gt;</span> nums2[j]) {
+</span></span><span style="display:flex;"><span>      nums1[k<span style="color:#666">--</span>] <span style="color:#666">=</span> nums1[i<span style="color:#666">--</span>];
+</span></span><span style="display:flex;"><span>    } <span style="color:#a2f;font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>      nums1[k<span style="color:#666">--</span>] <span style="color:#666">=</span> nums2[j<span style="color:#666">--</span>];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">return</span> nums1;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="17-将有序数组转换为二叉搜索树">1.7 将有序数组转换为二叉搜索树 <a href="#17-%e5%b0%86%e6%9c%89%e5%ba%8f%e6%95%b0%e7%bb%84%e8%bd%ac%e6%8d%a2%e4%b8%ba%e4%ba%8c%e5%8f%89%e6%90%9c%e7%b4%a2%e6%a0%91" class="anchor">🔗</a></h3><p><strong>思路</strong>：递归，每一次返回数组中的中间点</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">var</span> sortedArrayToBST <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">function</span> (nums) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">if</span> (nums.length <span style="color:#666">===</span> <span style="color:#666">0</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a2f;font-weight:bold">return</span> <span style="color:#a2f;font-weight:bold">null</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">const</span> middle <span style="color:#666">=</span> <span style="color:#a2f">Math</span>.floor(nums.length <span style="color:#666">/</span> <span style="color:#666">2</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">const</span> root <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">new</span> TreeNode(nums[middle]);
+</span></span><span style="display:flex;"><span>  root.left <span style="color:#666">=</span> sortedArrayToBST(nums.slice(<span style="color:#666">0</span>, middle));
+</span></span><span style="display:flex;"><span>  root.right <span style="color:#666">=</span> sortedArrayToBST(nums.slice(middle <span style="color:#666">+</span> <span style="color:#666">1</span>, nums.length));
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">return</span> root;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="18-买卖股票的最佳时机">1.8 买卖股票的最佳时机 <a href="#18-%e4%b9%b0%e5%8d%96%e8%82%a1%e7%a5%a8%e7%9a%84%e6%9c%80%e4%bd%b3%e6%97%b6%e6%9c%ba" class="anchor">🔗</a></h3><p><strong>思路</strong>：记住最小点，遍历过程中更新最小点并计算利润</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">var</span> maxProfit <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">function</span> (prices) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">let</span> min <span style="color:#666">=</span> prices[<span style="color:#666">0</span>];
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">let</span> s <span style="color:#666">=</span> <span style="color:#666">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">for</span> (<span style="color:#a2f;font-weight:bold">let</span> i <span style="color:#666">=</span> <span style="color:#666">1</span>; i <span style="color:#666">&lt;</span> prices.length; i<span style="color:#666">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a2f;font-weight:bold">if</span> (prices[i] <span style="color:#666">&lt;</span> min) {
+</span></span><span style="display:flex;"><span>      min <span style="color:#666">=</span> prices[i];
+</span></span><span style="display:flex;"><span>    } <span style="color:#a2f;font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>      s <span style="color:#666">=</span> <span style="color:#a2f">Math</span>.max(s, prices[i] <span style="color:#666">-</span> min);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">return</span> s;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="19-只出现一次的数字">1.9 只出现一次的数字 <a href="#19-%e5%8f%aa%e5%87%ba%e7%8e%b0%e4%b8%80%e6%ac%a1%e7%9a%84%e6%95%b0%e5%ad%97" class="anchor">🔗</a></h3><p><strong>思路</strong>：异或运算，空间复杂度 o(1)</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">var</span> singleNumber <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">function</span> (nums) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">let</span> s <span style="color:#666">=</span> <span style="color:#666">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">for</span> (<span style="color:#a2f;font-weight:bold">let</span> i <span style="color:#666">=</span> <span style="color:#666">0</span>; i <span style="color:#666">&lt;</span> nums.length; i<span style="color:#666">++</span>) {
+</span></span><span style="display:flex;"><span>    s <span style="color:#666">^=</span> nums[i];
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">return</span> s;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="110-多数元素">1.10 多数元素 <a href="#110-%e5%a4%9a%e6%95%b0%e5%85%83%e7%b4%a0" class="anchor">🔗</a></h3><p><strong>思路</strong>：摩尔投票法，空间复杂度 o(1)</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">var</span> majorityElement <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">function</span> (nums) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">let</span> s <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">null</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">let</span> count <span style="color:#666">=</span> <span style="color:#666">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">for</span> (<span style="color:#a2f;font-weight:bold">let</span> num <span style="color:#a2f;font-weight:bold">of</span> nums) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a2f;font-weight:bold">if</span> (count <span style="color:#666">===</span> <span style="color:#666">0</span>) {
+</span></span><span style="display:flex;"><span>      s <span style="color:#666">=</span> num;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    count <span style="color:#666">+=</span> s <span style="color:#666">===</span> num <span style="color:#666">?</span> <span style="color:#666">1</span> <span style="color:#666">:</span> <span style="color:#666">-</span><span style="color:#666">1</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">return</span> s;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="111-存在重复元素">1.11 存在重复元素 <a href="#111-%e5%ad%98%e5%9c%a8%e9%87%8d%e5%a4%8d%e5%85%83%e7%b4%a0" class="anchor">🔗</a></h3><p><strong>思路</strong>：set 记录元素</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">var</span> containsDuplicate <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">function</span> (nums) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">const</span> seen <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">new</span> Set();
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">for</span> (<span style="color:#a2f;font-weight:bold">let</span> num <span style="color:#a2f;font-weight:bold">of</span> nums) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a2f;font-weight:bold">if</span> (seen.has(num)) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a2f;font-weight:bold">return</span> <span style="color:#a2f;font-weight:bold">true</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    seen.add(num);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">return</span> <span style="color:#a2f;font-weight:bold">false</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="112-存在重复元素-ii">1.12 存在重复元素 II <a href="#112-%e5%ad%98%e5%9c%a8%e9%87%8d%e5%a4%8d%e5%85%83%e7%b4%a0-ii" class="anchor">🔗</a></h3><p><strong>思路</strong>：map 记录元素出现的位置，如果满足第一次和第二次的位置 abs(i - j) &lt;= k，返回 true，否则更新元素位置</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">var</span> containsNearbyDuplicate <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">function</span> (nums, k) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">const</span> map <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">new</span> Map();
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">for</span> (<span style="color:#a2f;font-weight:bold">let</span> i <span style="color:#666">=</span> <span style="color:#666">0</span>; i <span style="color:#666">&lt;</span> nums.length; i<span style="color:#666">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a2f;font-weight:bold">if</span> (map.has(nums[i])) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a2f;font-weight:bold">if</span> (<span style="color:#a2f">Math</span>.abs(i <span style="color:#666">-</span> map.get(nums[i])) <span style="color:#666">&lt;=</span> k) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a2f;font-weight:bold">return</span> <span style="color:#a2f;font-weight:bold">true</span>;
+</span></span><span style="display:flex;"><span>      } <span style="color:#a2f;font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>        map.set(nums[i], i);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    } <span style="color:#a2f;font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>      map.set(nums[i], i);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">return</span> <span style="color:#a2f;font-weight:bold">false</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="113-丢失的数字">1.13 丢失的数字 <a href="#113-%e4%b8%a2%e5%a4%b1%e7%9a%84%e6%95%b0%e5%ad%97" class="anchor">🔗</a></h3><p><strong>思路</strong>：数组求和后遍历递减，剩余值为丢失数字</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">var</span> missingNumber <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">function</span> (nums) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">let</span> sum <span style="color:#666">=</span> <span style="color:#666">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">for</span> (<span style="color:#a2f;font-weight:bold">let</span> i <span style="color:#666">=</span> <span style="color:#666">1</span>; i <span style="color:#666">&lt;=</span> nums.length; i<span style="color:#666">++</span>) {
+</span></span><span style="display:flex;"><span>    sum <span style="color:#666">+=</span> i;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">for</span> (<span style="color:#a2f;font-weight:bold">let</span> num <span style="color:#a2f;font-weight:bold">of</span> nums) {
+</span></span><span style="display:flex;"><span>    sum <span style="color:#666">-=</span> num;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">return</span> sum;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="114-找到所有数组中消失的数字">1.14 找到所有数组中消失的数字 <a href="#114-%e6%89%be%e5%88%b0%e6%89%80%e6%9c%89%e6%95%b0%e7%bb%84%e4%b8%ad%e6%b6%88%e5%a4%b1%e7%9a%84%e6%95%b0%e5%ad%97" class="anchor">🔗</a></h3><p><strong>思路</strong>：第一次遍历每一个元素，元素应该出现的位置为其绝对值减 1，第二次遍历，值为正则保存索引加 1。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">var</span> findDisappearedNumbers <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">function</span> (nums) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">const</span> res <span style="color:#666">=</span> [];
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">for</span> (<span style="color:#a2f;font-weight:bold">let</span> i <span style="color:#666">=</span> <span style="color:#666">0</span>; i <span style="color:#666">&lt;</span> nums.length; i<span style="color:#666">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a2f;font-weight:bold">const</span> index <span style="color:#666">=</span> <span style="color:#a2f">Math</span>.abs(nums[i]) <span style="color:#666">-</span> <span style="color:#666">1</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a2f;font-weight:bold">if</span> (nums[index] <span style="color:#666">&gt;</span> <span style="color:#666">0</span>) {
+</span></span><span style="display:flex;"><span>      nums[index] <span style="color:#666">=</span> <span style="color:#666">-</span>nums[index];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">for</span> (<span style="color:#a2f;font-weight:bold">let</span> i <span style="color:#666">=</span> <span style="color:#666">0</span>; i <span style="color:#666">&lt;</span> nums.length; i<span style="color:#666">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a2f;font-weight:bold">if</span> (nums[i] <span style="color:#666">&gt;</span> <span style="color:#666">0</span>) {
+</span></span><span style="display:flex;"><span>      res.push(i <span style="color:#666">+</span> <span style="color:#666">1</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">return</span> res;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="115-移动零">1.15 移动零 <a href="#115-%e7%a7%bb%e5%8a%a8%e9%9b%b6" class="anchor">🔗</a></h3><p><strong>思路</strong>：双指针，零往后移动</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">var</span> moveZeroes <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">function</span> (nums) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">let</span> left <span style="color:#666">=</span> <span style="color:#666">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">for</span> (<span style="color:#a2f;font-weight:bold">let</span> i <span style="color:#666">=</span> <span style="color:#666">0</span>; i <span style="color:#666">&lt;</span> nums.length; i<span style="color:#666">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a2f;font-weight:bold">if</span> (nums[i] <span style="color:#666">!==</span> <span style="color:#666">0</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a2f;font-weight:bold">if</span> (i <span style="color:#666">!==</span> left) {
+</span></span><span style="display:flex;"><span>        nums[left] <span style="color:#666">=</span> nums[i];
+</span></span><span style="display:flex;"><span>        nums[i] <span style="color:#666">=</span> <span style="color:#666">0</span>;
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>      left<span style="color:#666">++</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">return</span> nums;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="116-两个数组的交集-ii">1.16 两个数组的交集 II <a href="#116-%e4%b8%a4%e4%b8%aa%e6%95%b0%e7%bb%84%e7%9a%84%e4%ba%a4%e9%9b%86-ii" class="anchor">🔗</a></h3><p><strong>思路</strong>：map 记录第一个数组元素出现的次数，遍历第二个数组时，map 元素出现次数不为 0 的情况下，存储结果。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">var</span> intersect <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">function</span> (nums1, nums2) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">const</span> map <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">new</span> Map();
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">const</span> res <span style="color:#666">=</span> [];
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">for</span> (<span style="color:#a2f;font-weight:bold">let</span> item <span style="color:#a2f;font-weight:bold">of</span> nums1) {
+</span></span><span style="display:flex;"><span>    map.has(item) <span style="color:#666">?</span> map.set(item, map.get(item) <span style="color:#666">+</span> <span style="color:#666">1</span>) <span style="color:#666">:</span> map.set(item, <span style="color:#666">1</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">for</span> (<span style="color:#a2f;font-weight:bold">let</span> item <span style="color:#a2f;font-weight:bold">of</span> nums2) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a2f;font-weight:bold">if</span> (map.has(item) <span style="color:#666">&amp;&amp;</span> map.get(item) <span style="color:#666">!==</span> <span style="color:#666">0</span>) {
+</span></span><span style="display:flex;"><span>      res.push(item);
+</span></span><span style="display:flex;"><span>      map.set(item, map.get(item) <span style="color:#666">-</span> <span style="color:#666">1</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">return</span> res;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="117-第三大的数">1.17 第三大的数 <a href="#117-%e7%ac%ac%e4%b8%89%e5%a4%a7%e7%9a%84%e6%95%b0" class="anchor">🔗</a></h3><p><strong>思路</strong>：维护一个长度为 3 的前三大元素的数组，输出数组中的最小值。 或者使用三指针</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">var</span> thirdMax <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">function</span> (nums) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">const</span> set <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">new</span> Set();
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">for</span> (<span style="color:#a2f;font-weight:bold">let</span> num <span style="color:#a2f;font-weight:bold">of</span> nums) {
+</span></span><span style="display:flex;"><span>    set.add(num);
+</span></span><span style="display:flex;"><span>    <span style="color:#a2f;font-weight:bold">if</span> (set.size <span style="color:#666">&gt;</span> <span style="color:#666">3</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a2f;font-weight:bold">const</span> min <span style="color:#666">=</span> <span style="color:#a2f">Math</span>.min(...set);
+</span></span><span style="display:flex;"><span>      set.<span style="color:#a2f;font-weight:bold">delete</span>(min);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">if</span> (set.size <span style="color:#666">&lt;</span> <span style="color:#666">3</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a2f;font-weight:bold">return</span> <span style="color:#a2f">Math</span>.max(...set);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">return</span> <span style="color:#a2f">Math</span>.min(...set);
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="118-分发饼干">1.18 分发饼干 <a href="#118-%e5%88%86%e5%8f%91%e9%a5%bc%e5%b9%b2" class="anchor">🔗</a></h3><p><strong>思路</strong>：数组排序后，将最小的饼干分给最小饭量的小朋友，不满足下一个饼干。满足，下一个小朋友下一个饼干。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">var</span> findContentChildren <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">function</span> (g, s) {
+</span></span><span style="display:flex;"><span>  g.sort((a, b) =&gt; a <span style="color:#666">-</span> b);
+</span></span><span style="display:flex;"><span>  s.sort((a, b) =&gt; a <span style="color:#666">-</span> b);
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">let</span> index <span style="color:#666">=</span> <span style="color:#666">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">for</span> (<span style="color:#a2f;font-weight:bold">let</span> i <span style="color:#666">=</span> <span style="color:#666">0</span>; i <span style="color:#666">&lt;</span> s.length; i<span style="color:#666">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a2f;font-weight:bold">if</span> (s[i] <span style="color:#666">&gt;=</span> g[index]) {
+</span></span><span style="display:flex;"><span>      index<span style="color:#666">++</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">return</span> index;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="119-岛屿周长">1.19 岛屿周长 <a href="#119-%e5%b2%9b%e5%b1%bf%e5%91%a8%e9%95%bf" class="anchor">🔗</a></h3><p><strong>思路</strong>：如果是岛屿，周长+4，然后判断边界情况，如果岛屿周边有岛屿，周长减 1</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">var</span> islandPerimeter <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">function</span> (grid) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">let</span> res <span style="color:#666">=</span> <span style="color:#666">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">let</span> row <span style="color:#666">=</span> grid.length;
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">for</span> (<span style="color:#a2f;font-weight:bold">let</span> i <span style="color:#666">=</span> <span style="color:#666">0</span>; i <span style="color:#666">&lt;</span> row; i<span style="color:#666">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a2f;font-weight:bold">let</span> col <span style="color:#666">=</span> grid[i].length;
+</span></span><span style="display:flex;"><span>    <span style="color:#a2f;font-weight:bold">for</span> (<span style="color:#a2f;font-weight:bold">let</span> j <span style="color:#666">=</span> <span style="color:#666">0</span>; j <span style="color:#666">&lt;</span> col; j<span style="color:#666">++</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a2f;font-weight:bold">if</span> (grid[i][j] <span style="color:#666">===</span> <span style="color:#666">1</span>) {
+</span></span><span style="display:flex;"><span>        res <span style="color:#666">+=</span> <span style="color:#666">4</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#a2f;font-weight:bold">if</span> (i <span style="color:#666">-</span> <span style="color:#666">1</span> <span style="color:#666">&gt;=</span> <span style="color:#666">0</span> <span style="color:#666">&amp;&amp;</span> grid[i <span style="color:#666">-</span> <span style="color:#666">1</span>][j] <span style="color:#666">===</span> <span style="color:#666">1</span>) {
+</span></span><span style="display:flex;"><span>          res<span style="color:#666">--</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#a2f;font-weight:bold">if</span> (i <span style="color:#666">+</span> <span style="color:#666">1</span> <span style="color:#666">&lt;</span> row <span style="color:#666">&amp;&amp;</span> grid[i <span style="color:#666">+</span> <span style="color:#666">1</span>][j] <span style="color:#666">===</span> <span style="color:#666">1</span>) {
+</span></span><span style="display:flex;"><span>          res<span style="color:#666">--</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#a2f;font-weight:bold">if</span> (j <span style="color:#666">-</span> <span style="color:#666">1</span> <span style="color:#666">&gt;=</span> <span style="color:#666">0</span> <span style="color:#666">&amp;&amp;</span> grid[i][j <span style="color:#666">-</span> <span style="color:#666">1</span>] <span style="color:#666">===</span> <span style="color:#666">1</span>) {
+</span></span><span style="display:flex;"><span>          res<span style="color:#666">--</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#a2f;font-weight:bold">if</span> (j <span style="color:#666">+</span> <span style="color:#666">1</span> <span style="color:#666">&lt;</span> col <span style="color:#666">&amp;&amp;</span> grid[i][j <span style="color:#666">+</span> <span style="color:#666">1</span>] <span style="color:#666">===</span> <span style="color:#666">1</span>) {
+</span></span><span style="display:flex;"><span>          res<span style="color:#666">--</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">return</span> res;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h2 id="2-字符串">2. 字符串 <a href="#2-%e5%ad%97%e7%ac%a6%e4%b8%b2" class="anchor">🔗</a></h2><h2 id="3-链表">3. 链表 <a href="#3-%e9%93%be%e8%a1%a8" class="anchor">🔗</a></h2><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"></code></pre></div>
+      </div>
+      <div class="my-toc">
+        
+        
+  
+    <aside class="toc">
+      <details open>
+          <summary>
+             目录
+          </summary>
+          <div>
+              <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-数组">1. 数组</a>
+      <ul>
+        <li><a href="#11-两数之和">1.1 两数之和</a></li>
+        <li><a href="#12-删除有序数组中的重复项">1.2 删除有序数组中的重复项</a></li>
+        <li><a href="#13-原地移除元素">1.3 原地移除元素</a></li>
+        <li><a href="#14-搜索插入位置">1.4 搜索插入位置</a></li>
+        <li><a href="#15-加一">1.5 加一</a></li>
+        <li><a href="#16-合并两个有序数组">1.6 合并两个有序数组</a></li>
+        <li><a href="#17-将有序数组转换为二叉搜索树">1.7 将有序数组转换为二叉搜索树</a></li>
+        <li><a href="#18-买卖股票的最佳时机">1.8 买卖股票的最佳时机</a></li>
+        <li><a href="#19-只出现一次的数字">1.9 只出现一次的数字</a></li>
+        <li><a href="#110-多数元素">1.10 多数元素</a></li>
+        <li><a href="#111-存在重复元素">1.11 存在重复元素</a></li>
+        <li><a href="#112-存在重复元素-ii">1.12 存在重复元素 II</a></li>
+        <li><a href="#113-丢失的数字">1.13 丢失的数字</a></li>
+        <li><a href="#114-找到所有数组中消失的数字">1.14 找到所有数组中消失的数字</a></li>
+        <li><a href="#115-移动零">1.15 移动零</a></li>
+        <li><a href="#116-两个数组的交集-ii">1.16 两个数组的交集 II</a></li>
+        <li><a href="#117-第三大的数">1.17 第三大的数</a></li>
+        <li><a href="#118-分发饼干">1.18 分发饼干</a></li>
+        <li><a href="#119-岛屿周长">1.19 岛屿周长</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-字符串">2. 字符串</a></li>
+    <li><a href="#3-链表">3. 链表</a></li>
+  </ul>
+</nav>
+          </div>
+      </details>
+    </aside>
+  
+
+
+        
+      </div>
+    </div>
+
+    
+        <div class="tags">
+            
+                <a href="http://localhost:1313/tags/algorithm">Algorithm</a>
+            
+        </div>
+    
+    
+    
+
+</section>
+
+
+    </main>
+    
+    <footer id="footer">
+    
+
+    <div class="copyright">
+    
+       © Copyright 
+       2025 
+       <span class="split">
+        <svg fill="#bbbbbb" width="15" height="15" version="1.1" id="heart-15" xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 15 15">
+  <path d="M13.91,6.75c-1.17,2.25-4.3,5.31-6.07,6.94c-0.1903,0.1718-0.4797,0.1718-0.67,0C5.39,12.06,2.26,9,1.09,6.75&#xA;&#x9;C-1.48,1.8,5-1.5,7.5,3.45C10-1.5,16.48,1.8,13.91,6.75z"/>
+</svg>
+       </span>
+       闫庆国
+    
+    </div>
+
+</footer>
+
+
+
+  </body>
+</html>
