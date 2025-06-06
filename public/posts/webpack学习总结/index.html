@@ -55,25 +55,326 @@
           ·
         </span>
         <span>
-          2字
+          1259字
         </span>
         <span class="split">
           ·
         </span>
         <span>
-          1分钟
+          3分钟
         </span>
     </div>
 
 
     <div class="content">
       <div>
-        <p>hello webpack</p>
+        <h2 id="webpack-打包流程">webpack 打包流程 <a href="#webpack-%e6%89%93%e5%8c%85%e6%b5%81%e7%a8%8b" class="anchor">🔗</a></h2><p>Webpack 的打包流程是一个复杂的过程，主要包含以下几个步骤：</p>
+<ol>
+<li>
+<p><strong>初始化参数</strong>：</p>
+<ul>
+<li>从配置文件和 Shell 语句中读取与合并参数</li>
+<li>得到最终的配置对象</li>
+</ul>
+</li>
+<li>
+<p><strong>开始编译</strong>：</p>
+<ul>
+<li>初始化 Compiler 对象</li>
+<li>加载所有配置的插件</li>
+<li>执行对象的 run 方法开始执行编译</li>
+</ul>
+</li>
+<li>
+<p><strong>确定入口</strong>：</p>
+<ul>
+<li>根据配置中的 entry 找出所有的入口文件</li>
+<li>调用 <code>compilation.addEntry</code> 将入口文件转换为 dependence 对象</li>
+</ul>
+</li>
+<li>
+<p><strong>编译模块</strong>：</p>
+<ul>
+<li>从入口文件出发，调用所有配置的 Loader 对模块进行转换</li>
+<li>再找出该模块依赖的模块，递归本步骤直到所有入口依赖的文件都经过了本步骤的处理</li>
+</ul>
+</li>
+<li>
+<p><strong>完成模块编译</strong>：</p>
+<ul>
+<li>经过第 4 步使用 Loader 翻译完所有模块后，得到了每个模块被翻译后的最终内容以及它们之间的依赖关系</li>
+</ul>
+</li>
+<li>
+<p><strong>输出资源</strong>：</p>
+<ul>
+<li>根据入口和模块之间的依赖关系，组装成一个个包含多个模块的 Chunk</li>
+<li>再把每个 Chunk 转换成一个单独的文件加入到输出列表</li>
+</ul>
+</li>
+<li>
+<p><strong>输出完成</strong>：</p>
+<ul>
+<li>确定好输出内容后，根据配置确定输出的路径和文件名</li>
+<li>把文件内容写入到文件系统</li>
+</ul>
+</li>
+</ol>
+<h2 id="webpack-打包体积优化">webpack 打包体积优化 <a href="#webpack-%e6%89%93%e5%8c%85%e4%bd%93%e7%a7%af%e4%bc%98%e5%8c%96" class="anchor">🔗</a></h2><p>在实际项目中，打包体积的优化是非常重要的，以下是一些常用的优化策略：</p>
+<ol>
+<li>
+<p><strong>代码压缩</strong></p>
+<ul>
+<li>使用 <code>terser-webpack-plugin</code> 压缩 JavaScript 代码</li>
+<li>使用 <code>css-minimizer-webpack-plugin</code> 压缩 CSS 代码</li>
+<li>使用 <code>html-webpack-plugin</code> 压缩 HTML 代码</li>
+</ul>
+</li>
+<li>
+<p><strong>Tree Shaking</strong></p>
+<ul>
+<li>开启 production 模式自动启用</li>
+<li>在 package.json 中设置 &ldquo;sideEffects&rdquo;: false</li>
+<li>使用 ES6 的模块语法（import/export）</li>
+</ul>
+</li>
+<li>
+<p><strong>图片优化</strong></p>
+<ul>
+<li>使用 <code>image-webpack-loader</code> 压缩图片</li>
+<li>小图片转 base64（url-loader）</li>
+<li>使用 webp 格式图片</li>
+</ul>
+</li>
+<li>
+<p><strong>按需加载</strong></p>
+<ul>
+<li>路由懒加载</li>
+<li>组件按需加载</li>
+<li>第三方库按需引入</li>
+</ul>
+</li>
+<li>
+<p><strong>压缩第三方库</strong></p>
+<ul>
+<li>使用 CDN 加载第三方库</li>
+<li>使用 <code>externals</code> 配置排除不需要打包的库</li>
+<li>使用 DllPlugin 单独打包第三方库</li>
+</ul>
+</li>
+<li>
+<p><strong>Gzip 压缩</strong></p>
+<ul>
+<li>使用 <code>compression-webpack-plugin</code> 开启 Gzip 压缩</li>
+<li>服务器端配置 Gzip</li>
+</ul>
+</li>
+</ol>
+<h2 id="webpack-打包速度提升">webpack 打包速度提升 <a href="#webpack-%e6%89%93%e5%8c%85%e9%80%9f%e5%ba%a6%e6%8f%90%e5%8d%87" class="anchor">🔗</a></h2><p>提升 Webpack 打包速度的策略主要有：</p>
+<ol>
+<li>
+<p><strong>优化 loader 配置</strong></p>
+<ul>
+<li>使用 <code>include</code> 或 <code>exclude</code> 缩小搜索范围</li>
+<li>使用 <code>cache-loader</code> 缓存 loader 的执行结果</li>
+<li>使用 <code>thread-loader</code> 开启多线程打包</li>
+</ul>
+</li>
+<li>
+<p><strong>优化 resolve 配置</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>resolve<span style="color:#666">:</span> {
+</span></span><span style="display:flex;"><span>  extensions<span style="color:#666">:</span> [<span style="color:#b44">&#39;.js&#39;</span>, <span style="color:#b44">&#39;.jsx&#39;</span>],
+</span></span><span style="display:flex;"><span>  alias<span style="color:#666">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#b44">&#39;@&#39;</span><span style="color:#666">:</span> path.resolve(__dirname, <span style="color:#b44">&#39;src&#39;</span>)
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+<li>
+<p><strong>使用 DllPlugin</strong></p>
+<ul>
+<li>将第三方库单独打包</li>
+<li>避免重复编译第三方库</li>
+</ul>
+</li>
+<li>
+<p><strong>开启热更新</strong></p>
+<ul>
+<li>使用 <code>webpack-dev-server</code> 的 HMR 功能</li>
+<li>只更新变更的模块，加快开发效率</li>
+</ul>
+</li>
+<li>
+<p><strong>利用缓存</strong></p>
+<ul>
+<li>使用 <code>cache</code> 配置项</li>
+<li>使用 <code>hard-source-webpack-plugin</code></li>
+</ul>
+</li>
+<li>
+<p><strong>合理使用 sourceMap</strong></p>
+<ul>
+<li>开发环境使用 <code>eval-cheap-module-source-map</code></li>
+<li>生产环境使用 <code>none</code> 或 <code>source-map</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="webpack-配置代理解决跨域问题">webpack 配置代理解决跨域问题 <a href="#webpack-%e9%85%8d%e7%bd%ae%e4%bb%a3%e7%90%86%e8%a7%a3%e5%86%b3%e8%b7%a8%e5%9f%9f%e9%97%ae%e9%a2%98" class="anchor">🔗</a></h2><p>在开发环境中，我们经常需要解决跨域问题，Webpack 提供了几种解决方案：</p>
+<ol>
+<li>
+<p><strong>devServer proxy 配置</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>module.exports <span style="color:#666">=</span> {
+</span></span><span style="display:flex;"><span>  devServer<span style="color:#666">:</span> {
+</span></span><span style="display:flex;"><span>    proxy<span style="color:#666">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#b44">&#34;/api&#34;</span><span style="color:#666">:</span> {
+</span></span><span style="display:flex;"><span>        target<span style="color:#666">:</span> <span style="color:#b44">&#34;http://localhost:3000&#34;</span>,
+</span></span><span style="display:flex;"><span>        pathRewrite<span style="color:#666">:</span> { <span style="color:#b44">&#34;^/api&#34;</span><span style="color:#666">:</span> <span style="color:#b44">&#34;&#34;</span> },
+</span></span><span style="display:flex;"><span>        changeOrigin<span style="color:#666">:</span> <span style="color:#a2f;font-weight:bold">true</span>,
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div></li>
+<li>
+<p><strong>CORS 配置</strong></p>
+<ul>
+<li>服务器端配置 Access-Control-Allow-Origin</li>
+<li>配置其他 CORS 相关头部</li>
+</ul>
+</li>
+<li>
+<p><strong>使用 nginx 反向代理</strong></p>
+</li>
+</ol>
+<h2 id="什么是-chunk">什么是 chunk <a href="#%e4%bb%80%e4%b9%88%e6%98%af-chunk" class="anchor">🔗</a></h2><p>Chunk 是 Webpack 打包过程中的一个重要概念：</p>
+<ol>
+<li>
+<p><strong>定义</strong>：</p>
+<ul>
+<li>Chunk 是 Webpack 打包过程中，一个模块的集合</li>
+<li>用于生成最终输出的文件 bundle</li>
+</ul>
+</li>
+<li>
+<p><strong>Chunk 的类型</strong>：</p>
+<ul>
+<li>Initial Chunk：入口起点的模块集合</li>
+<li>Async Chunk：异步加载的模块集合</li>
+<li>Runtime Chunk：运行时代码的集合</li>
+</ul>
+</li>
+<li>
+<p><strong>Chunk 的生成</strong>：</p>
+<ul>
+<li>entry 配置会生成 chunk</li>
+<li>动态导入会生成新的 chunk</li>
+<li>SplitChunksPlugin 分离的代码会生成新的 chunk</li>
+</ul>
+</li>
+</ol>
+<h2 id="代码分割">代码分割 <a href="#%e4%bb%a3%e7%a0%81%e5%88%86%e5%89%b2" class="anchor">🔗</a></h2><p>代码分割是优化前端应用的重要手段：</p>
+<ol>
+<li>
+<p><strong>入口起点分割</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>entry<span style="color:#666">:</span> {
+</span></span><span style="display:flex;"><span>  app<span style="color:#666">:</span> <span style="color:#b44">&#39;./src/app.js&#39;</span>,
+</span></span><span style="display:flex;"><span>  vendor<span style="color:#666">:</span> <span style="color:#b44">&#39;./src/vendor.js&#39;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+<li>
+<p><strong>动态导入</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">import</span>(<span style="color:#b44">&#34;./module&#34;</span>).then((module) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// 使用module
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>});
+</span></span></code></pre></div></li>
+<li>
+<p><strong>SplitChunksPlugin 配置</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>optimization<span style="color:#666">:</span> {
+</span></span><span style="display:flex;"><span>  splitChunks<span style="color:#666">:</span> {
+</span></span><span style="display:flex;"><span>    chunks<span style="color:#666">:</span> <span style="color:#b44">&#39;all&#39;</span>,
+</span></span><span style="display:flex;"><span>    minSize<span style="color:#666">:</span> <span style="color:#666">20000</span>,
+</span></span><span style="display:flex;"><span>    minRemainingSize<span style="color:#666">:</span> <span style="color:#666">0</span>,
+</span></span><span style="display:flex;"><span>    minChunks<span style="color:#666">:</span> <span style="color:#666">1</span>,
+</span></span><span style="display:flex;"><span>    maxAsyncRequests<span style="color:#666">:</span> <span style="color:#666">30</span>,
+</span></span><span style="display:flex;"><span>    maxInitialRequests<span style="color:#666">:</span> <span style="color:#666">30</span>,
+</span></span><span style="display:flex;"><span>    enforceSizeThreshold<span style="color:#666">:</span> <span style="color:#666">50000</span>,
+</span></span><span style="display:flex;"><span>    cacheGroups<span style="color:#666">:</span> {
+</span></span><span style="display:flex;"><span>      defaultVendors<span style="color:#666">:</span> {
+</span></span><span style="display:flex;"><span>        test<span style="color:#666">:</span> <span style="color:#b68">/[\\/]node_modules[\\/]/</span>,
+</span></span><span style="display:flex;"><span>        priority<span style="color:#666">:</span> <span style="color:#666">-</span><span style="color:#666">10</span>,
+</span></span><span style="display:flex;"><span>        reuseExistingChunk<span style="color:#666">:</span> <span style="color:#a2f;font-weight:bold">true</span>,
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#a2f;font-weight:bold">default</span><span style="color:#666">:</span> {
+</span></span><span style="display:flex;"><span>        minChunks<span style="color:#666">:</span> <span style="color:#666">2</span>,
+</span></span><span style="display:flex;"><span>        priority<span style="color:#666">:</span> <span style="color:#666">-</span><span style="color:#666">20</span>,
+</span></span><span style="display:flex;"><span>        reuseExistingChunk<span style="color:#666">:</span> <span style="color:#a2f;font-weight:bold">true</span>,
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ol>
+<h2 id="什么是-bundle">什么是 bundle <a href="#%e4%bb%80%e4%b9%88%e6%98%af-bundle" class="anchor">🔗</a></h2><p>Bundle 是 Webpack 打包的最终产物：</p>
+<ol>
+<li>
+<p><strong>定义</strong>：</p>
+<ul>
+<li>Bundle 是由 Webpack 打包出的最终文件</li>
+<li>包含了经过加载和编译的最终源文件版本</li>
+</ul>
+</li>
+<li>
+<p><strong>Bundle 的特点</strong>：</p>
+<ul>
+<li>是一个自执行函数</li>
+<li>包含模块加载器（module loader）</li>
+<li>包含模块定义</li>
+<li>包含运行时代码</li>
+</ul>
+</li>
+<li>
+<p><strong>Bundle 的类型</strong>：</p>
+<ul>
+<li>主 bundle：包含入口点的运行时和模块</li>
+<li>异步 bundle：通过代码分割生成的 bundle</li>
+<li>vendor bundle：第三方库的 bundle</li>
+</ul>
+</li>
+<li>
+<p><strong>Bundle 优化</strong>：</p>
+<ul>
+<li>压缩和混淆</li>
+<li>Tree Shaking</li>
+<li>Scope Hoisting</li>
+<li>代码分割</li>
+</ul>
+</li>
+</ol>
 
       </div>
       <div class="my-toc">
         
         
+  
+    <aside class="toc">
+      <details open>
+          <summary>
+             目录
+          </summary>
+          <div>
+              <nav id="TableOfContents">
+  <ul>
+    <li><a href="#webpack-打包流程">webpack 打包流程</a></li>
+    <li><a href="#webpack-打包体积优化">webpack 打包体积优化</a></li>
+    <li><a href="#webpack-打包速度提升">webpack 打包速度提升</a></li>
+    <li><a href="#webpack-配置代理解决跨域问题">webpack 配置代理解决跨域问题</a></li>
+    <li><a href="#什么是-chunk">什么是 chunk</a></li>
+    <li><a href="#代码分割">代码分割</a></li>
+    <li><a href="#什么是-bundle">什么是 bundle</a></li>
+  </ul>
+</nav>
+          </div>
+      </details>
+    </aside>
   
 
 
