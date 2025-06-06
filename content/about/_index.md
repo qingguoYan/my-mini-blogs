@@ -25,4 +25,6 @@ enableComments = false
 
 如果你对合作感兴趣，欢迎通过以下方式联系我：
 
-- 863235011@qq.com
+e-mail: 863235011@qq.com
+
+gmail: yanqingguo520@gmail.com

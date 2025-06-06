@@ -2,45 +2,45 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on 闫庆国的个人网站</title>
-    <link>http://localhost:1313/tags/</link>
+    <link>https://example.com/tags/</link>
     <description>Recent content in Tags on 闫庆国的个人网站</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 06 Jun 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://example.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Webpack</title>
-      <link>http://localhost:1313/tags/webpack/</link>
+      <link>https://example.com/tags/webpack/</link>
       <pubDate>Fri, 06 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/webpack/</guid>
+      <guid>https://example.com/tags/webpack/</guid>
       <description></description>
     </item>
     <item>
       <title>打包工具</title>
-      <link>http://localhost:1313/tags/%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7/</link>
+      <link>https://example.com/tags/%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Fri, 06 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7/</guid>
+      <guid>https://example.com/tags/%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7/</guid>
       <description></description>
     </item>
     <item>
       <title>面试</title>
-      <link>http://localhost:1313/tags/%E9%9D%A2%E8%AF%95/</link>
+      <link>https://example.com/tags/%E9%9D%A2%E8%AF%95/</link>
       <pubDate>Fri, 06 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/%E9%9D%A2%E8%AF%95/</guid>
+      <guid>https://example.com/tags/%E9%9D%A2%E8%AF%95/</guid>
       <description></description>
     </item>
     <item>
       <title>Algorithm</title>
-      <link>http://localhost:1313/tags/algorithm/</link>
+      <link>https://example.com/tags/algorithm/</link>
       <pubDate>Thu, 05 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/algorithm/</guid>
+      <guid>https://example.com/tags/algorithm/</guid>
       <description></description>
     </item>
     <item>
       <title>React</title>
-      <link>http://localhost:1313/tags/react/</link>
+      <link>https://example.com/tags/react/</link>
       <pubDate>Thu, 05 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/react/</guid>
+      <guid>https://example.com/tags/react/</guid>
       <description></description>
     </item>
   </channel>

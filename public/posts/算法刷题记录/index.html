@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <head>
     <title>算法刷题记录 | 闫庆国的个人网站</title>
 
     <meta charset="utf-8">
@@ -55,7 +55,7 @@
           ·
         </span>
         <span>
-          1640字
+          1940字
         </span>
         <span class="split">
           ·
@@ -328,7 +328,37 @@
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">return</span> res;
 </span></span><span style="display:flex;"><span>};
-</span></span></code></pre></div><h2 id="2-字符串">2. 字符串 <a href="#2-%e5%ad%97%e7%ac%a6%e4%b8%b2" class="anchor">🔗</a></h2><h2 id="3-链表">3. 链表 <a href="#3-%e9%93%be%e8%a1%a8" class="anchor">🔗</a></h2><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"></code></pre></div>
+</span></span></code></pre></div><h3 id="120-最大连续-1-的个数">1.20 最大连续 1 的个数 <a href="#120-%e6%9c%80%e5%a4%a7%e8%bf%9e%e7%bb%ad-1-%e7%9a%84%e4%b8%aa%e6%95%b0" class="anchor">🔗</a></h3><p><strong>思路</strong>：双指针 i，j。i 记录第一个 1 的位置，j 当前遍历的位置，计算连续 1 的长度，如果 j 位置不为 0，重置 i。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">var</span> findMaxConsecutiveOnes <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">function</span> (nums) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">let</span> res <span style="color:#666">=</span> <span style="color:#666">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">let</span> i <span style="color:#666">=</span> <span style="color:#666">-</span><span style="color:#666">1</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">for</span> (<span style="color:#a2f;font-weight:bold">let</span> j <span style="color:#666">=</span> <span style="color:#666">0</span>; j <span style="color:#666">&lt;</span> nums.length; j<span style="color:#666">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a2f;font-weight:bold">if</span> (nums[j] <span style="color:#666">===</span> <span style="color:#666">1</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a2f;font-weight:bold">if</span> (i <span style="color:#666">===</span> <span style="color:#666">-</span><span style="color:#666">1</span>) {
+</span></span><span style="display:flex;"><span>        i <span style="color:#666">=</span> j;
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>      res <span style="color:#666">=</span> <span style="color:#a2f">Math</span>.max(res, j <span style="color:#666">-</span> i <span style="color:#666">+</span> <span style="color:#666">1</span>);
+</span></span><span style="display:flex;"><span>    } <span style="color:#a2f;font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>      i <span style="color:#666">=</span> <span style="color:#666">-</span><span style="color:#666">1</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">return</span> res;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="121-提莫的攻击">1.21 提莫的攻击 <a href="#121-%e6%8f%90%e8%8e%ab%e7%9a%84%e6%94%bb%e5%87%bb" class="anchor">🔗</a></h3><p><strong>思路</strong>: max 记录当前中毒结束时间，每次攻击直接加上中毒时间，如果攻击时已经中毒，减去本次攻击和上次攻击的交集</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">var</span> findPoisonedDuration <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">function</span> (timeSeries, duration) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">let</span> res <span style="color:#666">=</span> <span style="color:#666">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">let</span> max <span style="color:#666">=</span> <span style="color:#666">-</span><span style="color:#666">1</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">for</span> (<span style="color:#a2f;font-weight:bold">let</span> i <span style="color:#666">=</span> <span style="color:#666">0</span>; i <span style="color:#666">&lt;</span> timeSeries.length; i<span style="color:#666">++</span>) {
+</span></span><span style="display:flex;"><span>    res <span style="color:#666">+=</span> duration; <span style="color:#080;font-style:italic">// 直接添加本次攻击时间
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>    <span style="color:#a2f;font-weight:bold">if</span> (timeSeries[i] <span style="color:#666">&lt;=</span> max) {
+</span></span><span style="display:flex;"><span>      <span style="color:#080;font-style:italic">// 如何两次攻击存在重叠
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>      res <span style="color:#666">-=</span> max <span style="color:#666">-</span> timeSeries[i] <span style="color:#666">+</span> <span style="color:#666">1</span>; <span style="color:#080;font-style:italic">// 减去两次攻击时间交集
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>    }
+</span></span><span style="display:flex;"><span>    max <span style="color:#666">=</span> timeSeries[i] <span style="color:#666">+</span> duration <span style="color:#666">-</span> <span style="color:#666">1</span>; <span style="color:#080;font-style:italic">//当前中毒结束时间
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">return</span> res;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h2 id="2-字符串">2. 字符串 <a href="#2-%e5%ad%97%e7%ac%a6%e4%b8%b2" class="anchor">🔗</a></h2><h2 id="3-链表">3. 链表 <a href="#3-%e9%93%be%e8%a1%a8" class="anchor">🔗</a></h2><h2 id="4-二叉树">4. 二叉树 <a href="#4-%e4%ba%8c%e5%8f%89%e6%a0%91" class="anchor">🔗</a></h2><h2 id="5-贪心">5. 贪心 <a href="#5-%e8%b4%aa%e5%bf%83" class="anchor">🔗</a></h2><h2 id="6-动态规划">6. 动态规划 <a href="#6-%e5%8a%a8%e6%80%81%e8%a7%84%e5%88%92" class="anchor">🔗</a></h2><h2 id="7-回溯">7. 回溯 <a href="#7-%e5%9b%9e%e6%ba%af" class="anchor">🔗</a></h2><h2 id="8-图">8. 图 <a href="#8-%e5%9b%be" class="anchor">🔗</a></h2>
       </div>
       <div class="my-toc">
         
@@ -363,10 +393,17 @@
         <li><a href="#117-第三大的数">1.17 第三大的数</a></li>
         <li><a href="#118-分发饼干">1.18 分发饼干</a></li>
         <li><a href="#119-岛屿周长">1.19 岛屿周长</a></li>
+        <li><a href="#120-最大连续-1-的个数">1.20 最大连续 1 的个数</a></li>
+        <li><a href="#121-提莫的攻击">1.21 提莫的攻击</a></li>
       </ul>
     </li>
     <li><a href="#2-字符串">2. 字符串</a></li>
     <li><a href="#3-链表">3. 链表</a></li>
+    <li><a href="#4-二叉树">4. 二叉树</a></li>
+    <li><a href="#5-贪心">5. 贪心</a></li>
+    <li><a href="#6-动态规划">6. 动态规划</a></li>
+    <li><a href="#7-回溯">7. 回溯</a></li>
+    <li><a href="#8-图">8. 图</a></li>
   </ul>
 </nav>
           </div>
@@ -382,7 +419,7 @@
     
         <div class="tags">
             
-                <a href="http://localhost:1313/tags/algorithm">Algorithm</a>
+                <a href="https://example.com/tags/algorithm">Algorithm</a>
             
         </div>
     
