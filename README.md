@@ -6,4 +6,4 @@ git add submodule git@github.com:qingguoYan/hugo-theme-mini.git theme/mini
 
 启动： hugo serve
 
-发布： hugo 打包后，将 publick 文件夹直接上传到静态服务器
+发布： hugo 打包后，将 public 文件夹直接上传到静态服务器
