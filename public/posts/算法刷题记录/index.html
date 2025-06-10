@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <title>算法刷题记录 | 闫庆国的个人网站</title>
 
     <meta charset="utf-8">
@@ -55,13 +55,13 @@
           ·
         </span>
         <span>
-          1940字
+          2133字
         </span>
         <span class="split">
           ·
         </span>
         <span>
-          4分钟
+          5分钟
         </span>
     </div>
 
@@ -358,6 +358,42 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>  }
 </span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">return</span> res;
 </span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="122-下一个更大元素-i">1.22 下一个更大元素 I <a href="#122-%e4%b8%8b%e4%b8%80%e4%b8%aa%e6%9b%b4%e5%a4%a7%e5%85%83%e7%b4%a0-i" class="anchor">🔗</a></h3><p><strong>思路</strong>: 哈希表 + 单调栈</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">var</span> nextGreaterElement <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">function</span> (nums1, nums2) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">const</span> map <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">new</span> Map();
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">const</span> stack <span style="color:#666">=</span> [];
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">for</span> (<span style="color:#a2f;font-weight:bold">let</span> num <span style="color:#a2f;font-weight:bold">of</span> nums2) {
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">//单调递减栈，遇到大的元素，清空栈，为每个出栈的元素设置右侧最大值
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>    <span style="color:#a2f;font-weight:bold">while</span> (stack.length <span style="color:#666">&gt;</span> <span style="color:#666">0</span> <span style="color:#666">&amp;&amp;</span> stack[stack.length <span style="color:#666">-</span> <span style="color:#666">1</span>] <span style="color:#666">&lt;</span> num) {
+</span></span><span style="display:flex;"><span>      map.set(stack.pop(), num);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    stack.push(num);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">for</span> (<span style="color:#a2f;font-weight:bold">let</span> num <span style="color:#a2f;font-weight:bold">of</span> stack) {
+</span></span><span style="display:flex;"><span>    map.set(num, <span style="color:#666">-</span><span style="color:#666">1</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">return</span> nums1.map((num) =&gt; map.get(num));
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="123-相对名次">1.23 相对名次 <a href="#123-%e7%9b%b8%e5%af%b9%e5%90%8d%e6%ac%a1" class="anchor">🔗</a></h3><p><strong>思路</strong>: 排序 + 哈希表</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">var</span> findRelativeRanks <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">function</span> (score) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">const</span> map <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">new</span> Map();
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">const</span> sortedScores <span style="color:#666">=</span> [...score].sort((a, b) =&gt; b <span style="color:#666">-</span> a);
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">for</span> (<span style="color:#a2f;font-weight:bold">let</span> i <span style="color:#666">=</span> <span style="color:#666">0</span>; i <span style="color:#666">&lt;</span> sortedScores.length; i<span style="color:#666">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a2f;font-weight:bold">if</span> (i <span style="color:#666">===</span> <span style="color:#666">0</span>) {
+</span></span><span style="display:flex;"><span>      map.set(sortedScores[i], <span style="color:#b44">&#34;Gold Medal&#34;</span>);
+</span></span><span style="display:flex;"><span>    } <span style="color:#a2f;font-weight:bold">else</span> <span style="color:#a2f;font-weight:bold">if</span> (i <span style="color:#666">===</span> <span style="color:#666">1</span>) {
+</span></span><span style="display:flex;"><span>      map.set(sortedScores[i], <span style="color:#b44">&#34;Silver Medal&#34;</span>);
+</span></span><span style="display:flex;"><span>    } <span style="color:#a2f;font-weight:bold">else</span> <span style="color:#a2f;font-weight:bold">if</span> (i <span style="color:#666">===</span> <span style="color:#666">2</span>) {
+</span></span><span style="display:flex;"><span>      map.set(sortedScores[i], <span style="color:#b44">&#34;Bronze Medal&#34;</span>);
+</span></span><span style="display:flex;"><span>    } <span style="color:#a2f;font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>      map.set(sortedScores[i], (i <span style="color:#666">+</span> <span style="color:#666">1</span>).toString());
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">return</span> score.map((s) =&gt; map.get(s));
+</span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><h2 id="2-字符串">2. 字符串 <a href="#2-%e5%ad%97%e7%ac%a6%e4%b8%b2" class="anchor">🔗</a></h2><h2 id="3-链表">3. 链表 <a href="#3-%e9%93%be%e8%a1%a8" class="anchor">🔗</a></h2><h2 id="4-二叉树">4. 二叉树 <a href="#4-%e4%ba%8c%e5%8f%89%e6%a0%91" class="anchor">🔗</a></h2><h2 id="5-贪心">5. 贪心 <a href="#5-%e8%b4%aa%e5%bf%83" class="anchor">🔗</a></h2><h2 id="6-动态规划">6. 动态规划 <a href="#6-%e5%8a%a8%e6%80%81%e8%a7%84%e5%88%92" class="anchor">🔗</a></h2><h2 id="7-回溯">7. 回溯 <a href="#7-%e5%9b%9e%e6%ba%af" class="anchor">🔗</a></h2><h2 id="8-图">8. 图 <a href="#8-%e5%9b%be" class="anchor">🔗</a></h2>
       </div>
       <div class="my-toc">
@@ -395,6 +431,8 @@
         <li><a href="#119-岛屿周长">1.19 岛屿周长</a></li>
         <li><a href="#120-最大连续-1-的个数">1.20 最大连续 1 的个数</a></li>
         <li><a href="#121-提莫的攻击">1.21 提莫的攻击</a></li>
+        <li><a href="#122-下一个更大元素-i">1.22 下一个更大元素 I</a></li>
+        <li><a href="#123-相对名次">1.23 相对名次</a></li>
       </ul>
     </li>
     <li><a href="#2-字符串">2. 字符串</a></li>
@@ -419,7 +457,7 @@
     
         <div class="tags">
             
-                <a href="https://example.com/tags/algorithm">Algorithm</a>
+                <a href="http://localhost:1313/tags/algorithm">Algorithm</a>
             
         </div>
     
