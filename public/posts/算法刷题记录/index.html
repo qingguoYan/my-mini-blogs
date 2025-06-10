@@ -55,7 +55,7 @@
           ·
         </span>
         <span>
-          2133字
+          2255字
         </span>
         <span class="split">
           ·
@@ -394,6 +394,27 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">return</span> score.map((s) =&gt; map.get(s));
 </span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="124-重塑矩阵">1.24 重塑矩阵 <a href="#124-%e9%87%8d%e5%a1%91%e7%9f%a9%e9%98%b5" class="anchor">🔗</a></h3><p><strong>思路</strong>: 二维变一维，一维再变二维</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">var</span> matrixReshape <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">function</span> (mat, r, c) {
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// 变成一维数组，然后再改变
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>  <span style="color:#a2f;font-weight:bold">const</span> row <span style="color:#666">=</span> mat.length;
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">const</span> col <span style="color:#666">=</span> mat[<span style="color:#666">0</span>].length;
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// 不能重塑矩阵
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>  <span style="color:#a2f;font-weight:bold">if</span> (row <span style="color:#666">*</span> col <span style="color:#666">!==</span> r <span style="color:#666">*</span> c <span style="color:#666">||</span> (row <span style="color:#666">===</span> r <span style="color:#666">&amp;&amp;</span> col <span style="color:#666">===</span> c)) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a2f;font-weight:bold">return</span> mat;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">const</span> flat <span style="color:#666">=</span> mat.flat();
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">const</span> res <span style="color:#666">=</span> [];
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">let</span> index <span style="color:#666">=</span> <span style="color:#666">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">for</span> (<span style="color:#a2f;font-weight:bold">let</span> i <span style="color:#666">=</span> <span style="color:#666">0</span>; i <span style="color:#666">&lt;</span> r; i<span style="color:#666">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a2f;font-weight:bold">const</span> arr <span style="color:#666">=</span> [];
+</span></span><span style="display:flex;"><span>    <span style="color:#a2f;font-weight:bold">for</span> (<span style="color:#a2f;font-weight:bold">let</span> j <span style="color:#666">=</span> <span style="color:#666">0</span>; j <span style="color:#666">&lt;</span> c; j<span style="color:#666">++</span>) {
+</span></span><span style="display:flex;"><span>      arr[j] <span style="color:#666">=</span> flat[index<span style="color:#666">++</span>];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    res.push(arr);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">return</span> res;
+</span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><h2 id="2-字符串">2. 字符串 <a href="#2-%e5%ad%97%e7%ac%a6%e4%b8%b2" class="anchor">🔗</a></h2><h2 id="3-链表">3. 链表 <a href="#3-%e9%93%be%e8%a1%a8" class="anchor">🔗</a></h2><h2 id="4-二叉树">4. 二叉树 <a href="#4-%e4%ba%8c%e5%8f%89%e6%a0%91" class="anchor">🔗</a></h2><h2 id="5-贪心">5. 贪心 <a href="#5-%e8%b4%aa%e5%bf%83" class="anchor">🔗</a></h2><h2 id="6-动态规划">6. 动态规划 <a href="#6-%e5%8a%a8%e6%80%81%e8%a7%84%e5%88%92" class="anchor">🔗</a></h2><h2 id="7-回溯">7. 回溯 <a href="#7-%e5%9b%9e%e6%ba%af" class="anchor">🔗</a></h2><h2 id="8-图">8. 图 <a href="#8-%e5%9b%be" class="anchor">🔗</a></h2>
       </div>
       <div class="my-toc">
@@ -433,6 +454,7 @@
         <li><a href="#121-提莫的攻击">1.21 提莫的攻击</a></li>
         <li><a href="#122-下一个更大元素-i">1.22 下一个更大元素 I</a></li>
         <li><a href="#123-相对名次">1.23 相对名次</a></li>
+        <li><a href="#124-重塑矩阵">1.24 重塑矩阵</a></li>
       </ul>
     </li>
     <li><a href="#2-字符串">2. 字符串</a></li>
