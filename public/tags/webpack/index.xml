@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Webpack on 闫庆国的个人网站</title>
-    <link>https://example.com/tags/webpack/</link>
+    <link>http://localhost:1313/tags/webpack/</link>
     <description>Recent content in Webpack on 闫庆国的个人网站</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 06 Jun 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://example.com/tags/webpack/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/webpack/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Webpack学习总结</title>
-      <link>https://example.com/posts/webpack%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</link>
+      <link>http://localhost:1313/posts/webpack%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</link>
       <pubDate>Fri, 06 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>https://example.com/posts/webpack%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</guid>
+      <guid>http://localhost:1313/posts/webpack%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</guid>
       <description>&lt;h2 id=&#34;webpack-打包流程&#34;&gt;webpack 打包流程 &lt;a href=&#34;#webpack-%e6%89%93%e5%8c%85%e6%b5%81%e7%a8%8b&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Webpack 的打包流程是一个复杂的过程，主要包含以下几个步骤：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;初始化参数&lt;/strong&gt;：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;从配置文件和 Shell 语句中读取与合并参数&lt;/li&gt;&#xA;&lt;li&gt;得到最终的配置对象&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;开始编译&lt;/strong&gt;：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;初始化 Compiler 对象&lt;/li&gt;&#xA;&lt;li&gt;加载所有配置的插件&lt;/li&gt;&#xA;&lt;li&gt;执行对象的 run 方法开始执行编译&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;确定入口&lt;/strong&gt;：&lt;/p&gt;</description>
     </item>
   </channel>

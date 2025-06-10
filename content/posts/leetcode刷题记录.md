@@ -1,14 +1,12 @@
 +++
 author = "yqg"
-title = "算法刷题记录"
-date = "2025-06-05"
+title = "Leetcode 刷题记录"
+date = "2025-06-03"
 description = "力扣（LeetCode）算法题解记录"
 tags = [
     "Algorithm",
 ]
 +++
-
-# 算法刷题记录
 
 ## 1. 数组
 
