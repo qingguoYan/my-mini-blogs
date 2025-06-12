@@ -31,6 +31,31 @@
 
 
 
+    <style>
+      .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background-color: #333;
+        color: #fff;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border: none;
+        transition: background-color 0.3s;
+      }
+      .back-to-top:hover {
+        background-color: #555;
+      }
+      .back-to-top svg {
+        width: 20px;
+        height: 20px;
+      }
+    </style>
   </head>
 
   <body>
@@ -73,11 +98,11 @@
             
                 <div class="value">
                   <div class="date">
-                      <time datetime="2025-06-05 00:00:00 &#43;0000 UTC">06/05</time>
+                      <time datetime="2025-06-03 00:00:00 &#43;0000 UTC">06/03</time>
                   </div>
                   <div class="title">
-                      <a href="http://localhost:1313/posts/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/">
-                          算法刷题记录
+                      <a href="http://localhost:1313/posts/leetcode-%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/">
+                          Leetcode 刷题记录
                       </a>
 
                       
@@ -122,5 +147,34 @@
 
 
 
+
+    <button class="back-to-top" id="backToTop" title="回到顶部">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 19V5M5 12l7-7 7 7"/>
+      </svg>
+    </button>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var backToTopButton = document.getElementById('backToTop');
+        
+        
+        window.onscroll = function() {
+          if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+            backToTopButton.style.display = 'flex';
+          } else {
+            backToTopButton.style.display = 'none';
+          }
+        };
+        
+        
+        backToTopButton.addEventListener('click', function() {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+      });
+    </script>
   </body>
 </html>

@@ -501,7 +501,117 @@ var matrixReshape = function (mat, r, c) {
 };
 ```
 
+### 1.25 最长和谐子序列
+
+**思路**: map 记录每个元素出现的次数，遍历 map，判断 map 是否存在比当前元素大 1 的元素，更新最大值
+
+```javascript
+var findLHS = function (nums) {
+  const map = new Map();
+  for (let num of nums) {
+    map.has(num) ? map.set(num, map.get(num) + 1) : map.set(num, 1);
+  }
+  let res = 0;
+  for (const [num, cnt] of map) {
+    if (map.has(num + 1)) {
+      res = Math.max(res, map.get(num) + map.get(num + 1));
+    }
+  }
+  return res;
+};
+```
+
+### 1.26 区间求和 II
+
+**思路**: 区间范围最小值就是重复次数最多的区域
+
+```javascript
+var maxCount = function (m, n, ops) {
+  if (ops.length === 0) {
+    return m * n;
+  }
+  let minA = Infinity;
+  let minB = Infinity;
+  for (let o of ops) {
+    minA = Math.min(minA, o[0]);
+    minB = Math.min(minB, o[1]);
+  }
+  return minA * minB;
+};
+```
+
 ## 2. 字符串
+
+### 2.1 最长公共前缀
+
+**思路：横向遍历，将第一个字符串作为初始公共字符前缀，与第二个字符串比较，循环判断是否第二个字符串包括公共字符串并且 index 为 0,并不断更新公共字符串前缀。之后第三个字符串与公共前缀比较，
+直到最后一个，如果中途判断公共前缀为空字符串，返回空字符串。**
+
+```javascript
+var longestCommonPrefix = function (strs) {
+  let s = strs[0];
+  for (let i = 1; i < strs.length; i++) {
+    while (strs[i].indexOf(s) !== 0) {
+      s = s.slice(0, -1);
+      if (s === "") {
+        return "";
+      }
+    }
+  }
+  return s;
+};
+```
+
+### 2.2 有效的括号
+
+**思路：利用 map 匹配括号，利用栈存储括号，如果字符属于左边的直接放入栈，如果属于右边的，与栈顶元素匹配，如果匹配成功，弹出栈，否则元素入栈，最后判断栈是否为空**
+
+```javascript
+var isValid = function (s) {
+  const leftStrs = "([{";
+  const map = { ")": "(", "]": "[", "}": "{" };
+  const stack = [];
+  for (let c of s) {
+    if (leftStrs.indexOf(c) === -1) {
+      if (map[c] === stack[stack.length - 1]) {
+        stack.pop();
+      } else {
+        stack.push(c);
+      }
+    } else {
+      stack.push(c);
+    }
+  }
+  return stack.length === 0;
+};
+```
+
+### 2.3 罗马数字转整数
+
+**思路：如 IV I = 1， V = 5，IV 为 4，如果一个罗马数字的右边罗马数字比其大，则该罗马数字取负。IM 这样的不是合法数字**
+
+```javascript
+var romanToInt = function (s) {
+  const map = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 };
+  let n = 0;
+  let num = 0;
+  while (n < s.length) {
+    let cur = s[n];
+    if (n + 1 < s.length) {
+      let next = s[n + 1];
+      if (map[cur] < map[next]) {
+        num -= map[cur];
+      } else {
+        num += map[cur];
+      }
+    } else {
+      num += map[cur];
+    }
+    n++;
+  }
+  return num;
+};
+```
 
 ## 3. 链表
 
