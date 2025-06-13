@@ -6,7 +6,7 @@
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">    
 <meta name="viewport" content="width=device-width,minimum-scale=1">
-<meta name="description" content="css 🔗BFC 🔗BFC 是块级格式化上下文，具有以下特点：
+<meta name="description" content="CSS 🔗BFC 🔗BFC 是块级格式化上下文，具有以下特点：
 
 内部的 Box 垂直排列
 margin 会重叠
@@ -92,32 +92,32 @@ position 定位 🔗五种定位方式：">
           ·
         </span>
         <span>
-          227字
+          1718字
         </span>
         <span class="split">
           ·
         </span>
         <span>
-          1分钟
+          4分钟
         </span>
     </div>
 
 
     <div class="content">
       <div>
-        <h1 id="css">css <a href="#css" class="anchor">🔗</a></h1><h2 id="bfc">BFC <a href="#bfc" class="anchor">🔗</a></h2><p>BFC 是块级格式化上下文，具有以下特点：</p>
+        <h2 id="css">CSS <a href="#css" class="anchor">🔗</a></h2><h3 id="bfc">BFC <a href="#bfc" class="anchor">🔗</a></h3><p>BFC 是块级格式化上下文，具有以下特点：</p>
 <ul>
 <li>内部的 Box 垂直排列</li>
 <li>margin 会重叠</li>
 <li>可以包含浮动元素</li>
 <li>不会与浮动元素重叠</li>
 </ul>
-<h2 id="盒子模型">盒子模型 <a href="#%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b" class="anchor">🔗</a></h2><p>两种盒模型：</p>
+<h3 id="盒子模型">盒子模型 <a href="#%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b" class="anchor">🔗</a></h3><p>两种盒模型：</p>
 <ol>
 <li>标准盒模型：width = content</li>
 <li>IE 盒模型：width = content + padding + border</li>
 </ol>
-<h2 id="position-定位">position 定位 <a href="#position-%e5%ae%9a%e4%bd%8d" class="anchor">🔗</a></h2><p>五种定位方式：</p>
+<h3 id="position-定位">position 定位 <a href="#position-%e5%ae%9a%e4%bd%8d" class="anchor">🔗</a></h3><p>五种定位方式：</p>
 <ul>
 <li>static：默认值</li>
 <li>relative：相对定位</li>
@@ -125,23 +125,317 @@ position 定位 🔗五种定位方式：">
 <li>fixed：固定定位</li>
 <li>sticky：粘性定位</li>
 </ul>
-<h2 id="emrempx">em、rem、px <a href="#emrempx" class="anchor">🔗</a></h2><ul>
+<h3 id="emrempx">em、rem、px <a href="#emrempx" class="anchor">🔗</a></h3><ul>
 <li>px：固定像素单位</li>
 <li>em：相对父元素字体大小</li>
 <li>rem：相对根元素字体大小</li>
 </ul>
-<h2 id="基线">基线 <a href="#%e5%9f%ba%e7%ba%bf" class="anchor">🔗</a></h2><ul>
+<h3 id="基线">基线 <a href="#%e5%9f%ba%e7%ba%bf" class="anchor">🔗</a></h3><ul>
 <li>文字排版的基准线</li>
 <li>vertical-align 属性</li>
 <li>用于文本对齐</li>
 </ul>
-<!-- # js 基础
-
-# 异步编程
-
-# 浏览器缓存
-
-# 网络协议 -->
+<h2 id="javascript">JavaScript <a href="#javascript" class="anchor">🔗</a></h2><h3 id="原型与原型链">原型与原型链 <a href="#%e5%8e%9f%e5%9e%8b%e4%b8%8e%e5%8e%9f%e5%9e%8b%e9%93%be" class="anchor">🔗</a></h3><h4 id="1-基本概念">1. 基本概念 <a href="#1-%e5%9f%ba%e6%9c%ac%e6%a6%82%e5%bf%b5" class="anchor">🔗</a></h4><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#080;font-style:italic">// 构造函数
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span><span style="color:#a2f;font-weight:bold">function</span> Person(name) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">this</span>.name <span style="color:#666">=</span> name;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// 实例对象
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span><span style="color:#a2f;font-weight:bold">const</span> person <span style="color:#666">=</span> <span style="color:#a2f;font-weight:bold">new</span> Person(<span style="color:#b44">&#34;张三&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// 原型关系
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>console.log(person.__proto__ <span style="color:#666">===</span> Person.prototype); <span style="color:#080;font-style:italic">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>console.log(Person.prototype.constructor <span style="color:#666">===</span> Person); <span style="color:#080;font-style:italic">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>console.log(Person.prototype.__proto__ <span style="color:#666">===</span> <span style="color:#a2f">Object</span>.prototype); <span style="color:#080;font-style:italic">// true
+</span></span></span></code></pre></div><h4 id="2-原型链查找机制">2. 原型链查找机制 <a href="#2-%e5%8e%9f%e5%9e%8b%e9%93%be%e6%9f%a5%e6%89%be%e6%9c%ba%e5%88%b6" class="anchor">🔗</a></h4><ul>
+<li>当访问对象属性时，会按照以下顺序查找：
+<ol>
+<li>对象自身属性</li>
+<li>对象原型（<code>__proto__</code>）</li>
+<li>原型链上的其他原型</li>
+<li>直到找到 <code>Object.prototype</code>（原型链终点）</li>
+</ol>
+</li>
+</ul>
+<h4 id="3-重要特性">3. 重要特性 <a href="#3-%e9%87%8d%e8%a6%81%e7%89%b9%e6%80%a7" class="anchor">🔗</a></h4><ul>
+<li>原型链继承</li>
+<li>属性共享</li>
+<li>构造函数与原型的关系</li>
+<li><code>instanceof</code> 判断原理</li>
+</ul>
+<h3 id="事件循环机制">事件循环机制 <a href="#%e4%ba%8b%e4%bb%b6%e5%be%aa%e7%8e%af%e6%9c%ba%e5%88%b6" class="anchor">🔗</a></h3><h4 id="1-基本概念-1">1. 基本概念 <a href="#1-%e5%9f%ba%e6%9c%ac%e6%a6%82%e5%bf%b5-1" class="anchor">🔗</a></h4><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#080;font-style:italic">// 宏任务（MacroTask）
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>setTimeout(() =&gt; {
+</span></span><span style="display:flex;"><span>  console.log(<span style="color:#b44">&#34;宏任务1&#34;</span>);
+</span></span><span style="display:flex;"><span>}, <span style="color:#666">0</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// 微任务（MicroTask）
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span><span style="color:#a2f">Promise</span>.resolve().then(() =&gt; {
+</span></span><span style="display:flex;"><span>  console.log(<span style="color:#b44">&#34;微任务1&#34;</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// 执行顺序：微任务 &gt; 宏任务
+</span></span></span></code></pre></div><h4 id="2-执行顺序">2. 执行顺序 <a href="#2-%e6%89%a7%e8%a1%8c%e9%a1%ba%e5%ba%8f" class="anchor">🔗</a></h4><ol>
+<li>同步代码（主线程）</li>
+<li>微任务队列
+<ul>
+<li>Promise.then/catch/finally</li>
+<li>process.nextTick</li>
+<li>MutationObserver</li>
+</ul>
+</li>
+<li>宏任务队列
+<ul>
+<li>setTimeout/setInterval</li>
+<li>setImmediate</li>
+<li>I/O</li>
+<li>UI 渲染</li>
+</ul>
+</li>
+</ol>
+<h4 id="3-特点">3. 特点 <a href="#3-%e7%89%b9%e7%82%b9" class="anchor">🔗</a></h4><ul>
+<li>单线程执行</li>
+<li>异步任务处理</li>
+<li>任务优先级</li>
+<li>事件循环过程</li>
+</ul>
+<h3 id="async-与-deferonload-与-domcontentloaded">async 与 defer、onLoad 与 DOMContentLoaded <a href="#async-%e4%b8%8e-deferonload-%e4%b8%8e-domcontentloaded" class="anchor">🔗</a></h3><h4 id="1-script-标签属性">1. script 标签属性 <a href="#1-script-%e6%a0%87%e7%ad%be%e5%b1%9e%e6%80%a7" class="anchor">🔗</a></h4><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#080;font-style:italic">&lt;!-- 普通加载 --&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#008000;font-weight:bold">script</span> <span style="color:#b44">src</span><span style="color:#666">=</span><span style="color:#b44">&#34;normal.js&#34;</span>&gt;&lt;/<span style="color:#008000;font-weight:bold">script</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">&lt;!-- async 异步加载 --&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#008000;font-weight:bold">script</span> <span style="color:#b44">async</span> <span style="color:#b44">src</span><span style="color:#666">=</span><span style="color:#b44">&#34;async.js&#34;</span>&gt;&lt;/<span style="color:#008000;font-weight:bold">script</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">&lt;!-- defer 延迟加载 --&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#008000;font-weight:bold">script</span> <span style="color:#b44">defer</span> <span style="color:#b44">src</span><span style="color:#666">=</span><span style="color:#b44">&#34;defer.js&#34;</span>&gt;&lt;/<span style="color:#008000;font-weight:bold">script</span>&gt;
+</span></span></code></pre></div><h4 id="2-加载顺序对比">2. 加载顺序对比 <a href="#2-%e5%8a%a0%e8%bd%bd%e9%a1%ba%e5%ba%8f%e5%af%b9%e6%af%94" class="anchor">🔗</a></h4><table>
+  <thead>
+      <tr>
+          <th>属性</th>
+          <th>执行时机</th>
+          <th>阻塞情况</th>
+          <th>适用场景</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>无属性</td>
+          <td>立即执行</td>
+          <td>阻塞解析</td>
+          <td>依赖 DOM 的脚本</td>
+      </tr>
+      <tr>
+          <td>async</td>
+          <td>下载完立即执行</td>
+          <td>不阻塞解析</td>
+          <td>独立脚本</td>
+      </tr>
+      <tr>
+          <td>defer</td>
+          <td>DOMContentLoaded 前执行</td>
+          <td>不阻塞解析</td>
+          <td>依赖其他脚本</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="3-事件触发时机">3. 事件触发时机 <a href="#3-%e4%ba%8b%e4%bb%b6%e8%a7%a6%e5%8f%91%e6%97%b6%e6%9c%ba" class="anchor">🔗</a></h4><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#080;font-style:italic">// DOMContentLoaded：DOM 解析完成时触发
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span><span style="color:#a2f">document</span>.addEventListener(<span style="color:#b44">&#34;DOMContentLoaded&#34;</span>, () =&gt; {
+</span></span><span style="display:flex;"><span>  console.log(<span style="color:#b44">&#34;DOM 解析完成&#34;</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// load：页面所有资源加载完成时触发
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span><span style="color:#a2f">window</span>.addEventListener(<span style="color:#b44">&#34;load&#34;</span>, () =&gt; {
+</span></span><span style="display:flex;"><span>  console.log(<span style="color:#b44">&#34;页面加载完成&#34;</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><h4 id="4-执行顺序">4. 执行顺序 <a href="#4-%e6%89%a7%e8%a1%8c%e9%a1%ba%e5%ba%8f" class="anchor">🔗</a></h4><ol>
+<li>DOM 解析</li>
+<li>DOMContentLoaded 事件</li>
+<li>资源加载（图片、样式等）</li>
+<li>load 事件</li>
+</ol>
+<h4 id="5-使用建议">5. 使用建议 <a href="#5-%e4%bd%bf%e7%94%a8%e5%bb%ba%e8%ae%ae" class="anchor">🔗</a></h4><ul>
+<li>关键脚本：使用 defer</li>
+<li>独立脚本：使用 async</li>
+<li>依赖 DOM：等待 DOMContentLoaded</li>
+<li>依赖资源：等待 load</li>
+</ul>
+<h3 id="浏览器缓存">浏览器缓存 <a href="#%e6%b5%8f%e8%a7%88%e5%99%a8%e7%bc%93%e5%ad%98" class="anchor">🔗</a></h3><h4 id="强缓存">强缓存 <a href="#%e5%bc%ba%e7%bc%93%e5%ad%98" class="anchor">🔗</a></h4><ol>
+<li>强缓存不会向服务器发送请求，直接从缓存中读取资源。</li>
+<li>相关字段</li>
+</ol>
+<ul>
+<li><strong>Expires</strong>：过期时间（HTTP/1.0）
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-http" data-lang="http"><span style="display:flex;"><span><span style="">Expires: Wed, 21 Oct 2023 07:28:00 GMT
+</span></span></span></code></pre></div></li>
+<li><strong>Cache-Control</strong>：缓存控制（HTTP/1.1）
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-http" data-lang="http"><span style="display:flex;"><span><span style="">Cache-Control: max-age=31536000
+</span></span></span></code></pre></div><ul>
+<li><code>max-age</code>：最大缓存时间</li>
+<li><code>no-cache</code>：需要验证</li>
+<li><code>no-store</code>：不缓存</li>
+<li><code>private</code>：仅浏览器缓存</li>
+<li><code>public</code>：允许中间代理缓存</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li>
+<p>优先级</p>
+<p>Cache-Control &gt; Expires</p>
+</li>
+</ol>
+<h4 id="协商缓存">协商缓存 <a href="#%e5%8d%8f%e5%95%86%e7%bc%93%e5%ad%98" class="anchor">🔗</a></h4><ol>
+<li>基本概念</li>
+</ol>
+<p>协商缓存会向服务器发送请求，服务器判断资源是否可用。</p>
+<ol start="2">
+<li>相关字段</li>
+</ol>
+<ul>
+<li><strong>Last-Modified/If-Modified-Since</strong>：基于文件修改时间
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-http" data-lang="http"><span style="display:flex;"><span><span style="">Last-Modified: Wed, 21 Oct 2023 07:28:00 GMT
+</span></span></span><span style="display:flex;"><span><span style="">If-Modified-Since: Wed, 21 Oct 2023 07:28:00 GMT
+</span></span></span></code></pre></div></li>
+<li><strong>ETag/If-None-Match</strong>：基于文件内容
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-http" data-lang="http"><span style="display:flex;"><span><span style="">ETag: &#34;33a64df551425fcc55e4d42a148795d9f25f89d4&#34;
+</span></span></span><span style="display:flex;"><span><span style="">If-None-Match: &#34;33a64df551425fcc55e4d42a148795d9f25f89d4&#34;
+</span></span></span></code></pre></div></li>
+</ul>
+<ol start="3">
+<li>
+<p>优先级</p>
+<p>ETag &gt; Last-Modified</p>
+</li>
+<li>
+<p>缓存流程</p>
+</li>
+</ol>
+<ul>
+<li>浏览器发起请求</li>
+<li>服务器返回资源，带缓存标识</li>
+<li>浏览器缓存资源</li>
+<li>再次请求时，携带缓存标识</li>
+<li>服务器判断资源是否可用</li>
+<li>返回 304 或新资源</li>
+</ul>
+<ol start="5">
+<li>Express 实现示例</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">const</span> express <span style="color:#666">=</span> require(<span style="color:#b44">&#34;express&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">const</span> crypto <span style="color:#666">=</span> require(<span style="color:#b44">&#34;crypto&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">const</span> fs <span style="color:#666">=</span> require(<span style="color:#b44">&#34;fs&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">const</span> path <span style="color:#666">=</span> require(<span style="color:#b44">&#34;path&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">const</span> app <span style="color:#666">=</span> express();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// 模拟数据
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span><span style="color:#a2f;font-weight:bold">let</span> data <span style="color:#666">=</span> {
+</span></span><span style="display:flex;"><span>  content<span style="color:#666">:</span> <span style="color:#b44">&#34;Hello World&#34;</span>,
+</span></span><span style="display:flex;"><span>  lastModified<span style="color:#666">:</span> <span style="color:#a2f;font-weight:bold">new</span> <span style="color:#a2f">Date</span>().toUTCString(),
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// 计算 ETag
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span><span style="color:#a2f;font-weight:bold">function</span> calculateETag(content) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">return</span> crypto.createHash(<span style="color:#b44">&#34;md5&#34;</span>).update(content).digest(<span style="color:#b44">&#34;hex&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// 使用 Last-Modified 的示例
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>app.get(<span style="color:#b44">&#34;/last-modified&#34;</span>, (req, res) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">const</span> ifModifiedSince <span style="color:#666">=</span> req.headers[<span style="color:#b44">&#34;if-modified-since&#34;</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">if</span> (ifModifiedSince <span style="color:#666">&amp;&amp;</span> ifModifiedSince <span style="color:#666">===</span> data.lastModified) {
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// 资源未修改，返回 304
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>    res.status(<span style="color:#666">304</span>).end();
+</span></span><span style="display:flex;"><span>  } <span style="color:#a2f;font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// 资源已修改，返回新数据
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>    res.setHeader(<span style="color:#b44">&#34;Last-Modified&#34;</span>, data.lastModified);
+</span></span><span style="display:flex;"><span>    res.json(data);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// 使用 ETag 的示例
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>app.get(<span style="color:#b44">&#34;/etag&#34;</span>, (req, res) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">const</span> ifNoneMatch <span style="color:#666">=</span> req.headers[<span style="color:#b44">&#34;if-none-match&#34;</span>];
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">const</span> etag <span style="color:#666">=</span> calculateETag(data.content);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">if</span> (ifNoneMatch <span style="color:#666">&amp;&amp;</span> ifNoneMatch <span style="color:#666">===</span> etag) {
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// 资源未修改，返回 304
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>    res.status(<span style="color:#666">304</span>).end();
+</span></span><span style="display:flex;"><span>  } <span style="color:#a2f;font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// 资源已修改，返回新数据
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>    res.setHeader(<span style="color:#b44">&#34;ETag&#34;</span>, etag);
+</span></span><span style="display:flex;"><span>    res.json(data);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// 更新数据的接口
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>app.post(<span style="color:#b44">&#34;/update&#34;</span>, (req, res) =&gt; {
+</span></span><span style="display:flex;"><span>  data <span style="color:#666">=</span> {
+</span></span><span style="display:flex;"><span>    content<span style="color:#666">:</span> <span style="color:#b44">&#34;Updated Content&#34;</span>,
+</span></span><span style="display:flex;"><span>    lastModified<span style="color:#666">:</span> <span style="color:#a2f;font-weight:bold">new</span> <span style="color:#a2f">Date</span>().toUTCString(),
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>  res.json({ message<span style="color:#666">:</span> <span style="color:#b44">&#34;Data updated&#34;</span> });
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// 文件协商缓存示例
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>app.get(<span style="color:#b44">&#34;/file&#34;</span>, (req, res) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#a2f;font-weight:bold">const</span> filePath <span style="color:#666">=</span> path.join(__dirname, <span style="color:#b44">&#34;example.txt&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  fs.stat(filePath, (err, stats) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a2f;font-weight:bold">if</span> (err) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a2f;font-weight:bold">return</span> res.status(<span style="color:#666">404</span>).end();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a2f;font-weight:bold">const</span> ifModifiedSince <span style="color:#666">=</span> req.headers[<span style="color:#b44">&#34;if-modified-since&#34;</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#a2f;font-weight:bold">const</span> ifNoneMatch <span style="color:#666">=</span> req.headers[<span style="color:#b44">&#34;if-none-match&#34;</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// 使用 Last-Modified
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>    <span style="color:#a2f;font-weight:bold">if</span> (
+</span></span><span style="display:flex;"><span>      ifModifiedSince <span style="color:#666">&amp;&amp;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a2f;font-weight:bold">new</span> <span style="color:#a2f">Date</span>(ifModifiedSince).getTime() <span style="color:#666">&gt;=</span> stats.mtime.getTime()
+</span></span><span style="display:flex;"><span>    ) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a2f;font-weight:bold">return</span> res.status(<span style="color:#666">304</span>).end();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// 使用 ETag
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>    <span style="color:#a2f;font-weight:bold">const</span> etag <span style="color:#666">=</span> calculateETag(stats.size <span style="color:#666">+</span> stats.mtime.getTime().toString());
+</span></span><span style="display:flex;"><span>    <span style="color:#a2f;font-weight:bold">if</span> (ifNoneMatch <span style="color:#666">&amp;&amp;</span> ifNoneMatch <span style="color:#666">===</span> etag) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a2f;font-weight:bold">return</span> res.status(<span style="color:#666">304</span>).end();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// 设置缓存头
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>    res.setHeader(<span style="color:#b44">&#34;Last-Modified&#34;</span>, stats.mtime.toUTCString());
+</span></span><span style="display:flex;"><span>    res.setHeader(<span style="color:#b44">&#34;ETag&#34;</span>, etag);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// 发送文件
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>    res.sendFile(filePath);
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app.listen(<span style="color:#666">3000</span>, () =&gt; {
+</span></span><span style="display:flex;"><span>  console.log(<span style="color:#b44">&#34;Server running on port 3000&#34;</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><ol start="6">
+<li>测试方法</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#080;font-style:italic"># 1. 首次请求</span>
+</span></span><span style="display:flex;"><span>curl -i http://localhost:3000/etag
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"># 2. 使用上次返回的 ETag 再次请求</span>
+</span></span><span style="display:flex;"><span>curl -i -H <span style="color:#b44">&#39;If-None-Match: &#34;etag值&#34;&#39;</span> http://localhost:3000/etag
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"># 3. 更新数据</span>
+</span></span><span style="display:flex;"><span>curl -X POST http://localhost:3000/update
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"># 4. 再次请求（将返回新数据）</span>
+</span></span><span style="display:flex;"><span>curl -i http://localhost:3000/etag
+</span></span></code></pre></div><ol start="7">
+<li>实现要点</li>
+</ol>
+<ul>
+<li>使用 <code>Last-Modified</code> 时，需要精确到秒级</li>
+<li>使用 <code>ETag</code> 时，可以使用文件内容的哈希值</li>
+<li>两种方式可以同时使用，提供双重验证</li>
+<li>考虑使用缓存中间件（如 <code>express-etag</code>）</li>
+</ul>
 
       </div>
       <div class="my-toc">
@@ -156,11 +450,23 @@ position 定位 🔗五种定位方式：">
           <div>
               <nav id="TableOfContents">
   <ul>
-    <li><a href="#bfc">BFC</a></li>
-    <li><a href="#盒子模型">盒子模型</a></li>
-    <li><a href="#position-定位">position 定位</a></li>
-    <li><a href="#emrempx">em、rem、px</a></li>
-    <li><a href="#基线">基线</a></li>
+    <li><a href="#css">CSS</a>
+      <ul>
+        <li><a href="#bfc">BFC</a></li>
+        <li><a href="#盒子模型">盒子模型</a></li>
+        <li><a href="#position-定位">position 定位</a></li>
+        <li><a href="#emrempx">em、rem、px</a></li>
+        <li><a href="#基线">基线</a></li>
+      </ul>
+    </li>
+    <li><a href="#javascript">JavaScript</a>
+      <ul>
+        <li><a href="#原型与原型链">原型与原型链</a></li>
+        <li><a href="#事件循环机制">事件循环机制</a></li>
+        <li><a href="#async-与-deferonload-与-domcontentloaded">async 与 defer、onLoad 与 DOMContentLoaded</a></li>
+        <li><a href="#浏览器缓存">浏览器缓存</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
           </div>

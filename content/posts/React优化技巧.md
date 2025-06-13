@@ -1,6 +1,6 @@
 +++
 author = "yqg"
-title = "React开发经验总结"
+title = "React 开发经验总结"
 date = "2025-06-05"
 description = "深入探讨React开发中的性能优化、组件设计、状态管理等核心技术，结合实战经验分享最佳实践"
 tags = [
