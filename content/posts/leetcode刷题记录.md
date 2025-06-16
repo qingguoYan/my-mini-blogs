@@ -613,6 +613,29 @@ var romanToInt = function (s) {
 };
 ```
 
+### 2.4 字符串匹配
+
+**思路：暴力解法或者 KMP 算法**
+
+```js
+// 暴力解法 O(mn)
+var strStr = function (haystack, needle) {
+  if (needle.length > haystack.length) {
+    return -1;
+  }
+  for (let i = 0; i < haystack.length; i++) {
+    const str = haystack.slice(i, i + needle.length);
+    if (str.length < needle.length) {
+      return -1;
+    }
+    if (str === needle) {
+      return i;
+    }
+  }
+  return -1;
+};
+```
+
 ## 3. 链表
 
 ## 4. 二叉树
